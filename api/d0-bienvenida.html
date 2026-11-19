@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- D0 de la bienvenida de VIVO Food (texto: estrategia/vivo-live/2026-11-07-correo-food/bienvenida.md).
+     Se pega en Brevo: Automatización → correo → "Pega tu código". Lenguaje de plantillas de Brevo
+     (atributos del contacto y bloques condicionales por PERFIL y MOLESTIA); el link de baja lo pone Brevo.
+     Letra de sistema: TT Norms no carga en los correos. Diseño A "papel artesanal" (Laura, 2026-11-07). -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<style>:root{color-scheme:light only;supported-color-schemes:light only;}</style>
+<title>Tu resultado · VIVO Food</title>
+</head>
+<body style="margin:0;padding:0;background:#E9DFC9;">
+<div style="display:none;max-height:0;overflow:hidden;">Tu resultado y una historia de la tierra a tus manos.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#E9DFC9;">
+<tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#FBF6EA;border-radius:16px;overflow:hidden;font-family:Georgia,'Times New Roman',serif;color:#2D2A26;">
+
+  <tr><td align="center" style="background:#FBF6EA;padding:32px 32px 8px;">
+    <img src="https://vivolive.co/food-market/img/logotipo-pastilla.png" alt="VIVO Live Food" width="180" style="display:block;border:0;width:180px;height:auto;">
+  </td></tr>
+
+  <tr><td style="padding:24px 32px 8px;font-size:18px;line-height:1.65;">
+    <p style="margin:0 0 18px;">Hola{% if contact.NOMBRE %}, {{ contact.NOMBRE }}{% endif %}:</p>
+
+    {% if contact.PERFIL == "casa" %}
+    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#5F6638;">Tu resultado</p>
+    <p style="margin:0 0 12px;font-size:30px;line-height:1.2;font-style:italic;color:#9F2241;">La casa que cuida</p>
+    <p style="margin:0 0 18px;">Tus respuestas dicen que piensas en plural: antes de escoger qué comer, ya pensaste en los de tu mesa.</p>
+    <p style="margin:0 0 18px;">Por eso te queremos contar de alguien que también piensa en plural.</p>
+    {% elif contact.PERFIL == "bienestar" %}
+    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#5F6638;">Tu resultado</p>
+    <p style="margin:0 0 12px;font-size:30px;line-height:1.2;font-style:italic;color:#9F2241;">Bienestar con sabor</p>
+    <p style="margin:0 0 18px;">Tus respuestas dicen que cuidarte va primero, pero no a costa del sabor.</p>
+    <p style="margin:0 0 18px;">Por eso te queremos contar de alguien en cuya cocina cuidarse y comer rico siempre fueron lo mismo.</p>
+    {% elif contact.PERFIL == "origen" %}
+    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#5F6638;">Tu resultado</p>
+    <p style="margin:0 0 12px;font-size:30px;line-height:1.2;font-style:italic;color:#9F2241;">El del origen</p>
+    <p style="margin:0 0 18px;">Tus respuestas dicen que lo que comes tiene dirección: te importa la historia, no solo la etiqueta.</p>
+    <p style="margin:0 0 18px;">Por eso te queremos contar de alguien que guarda justo eso: el origen.</p>
+    {% else %}
+    <p style="margin:0 0 8px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#5F6638;">Tu resultado</p>
+    <p style="margin:0 0 12px;font-size:30px;line-height:1.2;font-style:italic;color:#9F2241;">Cocina de temporada</p>
+    <p style="margin:0 0 18px;">Tus respuestas dicen que lo bueno se nota en el plato: no compras por comprar, buscas que valga la pena.</p>
+    <p style="margin:0 0 18px;">Por eso te queremos contar de alguien que lo aprendió de niña, sembrando.</p>
+    {% endif %}
+
+    <p style="margin:8px 0 0;" align="center"><img src="https://vivolive.co/food-market/img/ilustracion-papa.gif?v=2" alt="La papa criolla: 4 meses bajo tierra y 25 minutos en la olla" width="496" height="279" style="display:block;margin:0 auto;border:0;width:100%;max-width:496px;height:auto;border-radius:12px;"></p>
+
+    <p style="margin:28px 0 0;border-top:1px solid #D8CBAE;font-size:0;line-height:0;">&nbsp;</p>
+    <p style="margin:28px 0 18px;font-size:28px;line-height:1.2;color:#2D2A26;">De la tierra a tus manos</p>
+    <p style="margin:0 0 18px;">En una casa de bahareque y paja que ya tenía sesenta años se cocinaba en un fogón de tres piedras, y de noche se alumbraba con velas de sebo: la luz eléctrica solo llegaba a las ciudades. Ahí María Lilia Jiménez aprendió a sembrar.</p>
+    <p style="margin:0 0 18px;">Nació en 1947 en la vereda San José de Gachancipá, y su amor por el campo fue tan grande que en 2017, junto a su hija Yadira, abrió en esa misma casa un museo campesino: los baúles de los padres, la piedra de moler, las ollas de barro. Afuera, la huerta: quinua, frijol, maíz, habas, cubios y papa. El Estado la nombró guardiana de semillas de Colombia.</p>
+    <p style="margin:0 0 18px;">La papa que ella siembra viene de lejos: hace al menos 7.000 años, en el sur del Perú, alguien empezó a cultivarla, y hoy existen más de 4.500 variedades nativas. Cada una sigue viva porque alguien como María Lilia la volvió a sembrar.</p>
+    <p style="margin:0 0 18px;">La próxima vez que partas una papa caliente y suba el vapor, piensa que sin personas como María Lilia y su hija esos sabores de siempre ya no estarían en tu cocina. Cada semilla que nadie vuelve a sembrar es un sabor que se pierde para siempre.</p>
+
+    {% if contact.MOLESTIA == "se_danan" %}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#B7CD96;border-radius:12px;margin:0 0 24px;">
+      <tr><td style="padding:22px 24px;font-size:16px;line-height:1.55;color:#2D2A26;">
+        <p style="margin:0 0 6px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#2D2A26;">Lo que nos enseña la tierra</p>
+        <p style="margin:0 0 12px;font-size:22px;line-height:1.25;font-style:italic;color:#2D2A26;">Para que la papa te dure más</p>
+        <p style="margin:0 0 10px;font-style:italic;">Lo fresco se te daña porque sigue vivo.</p>
+        <ul style="margin:0;padding-left:20px;"><li style="margin-bottom:8px;"><strong>A oscuras:</strong> la luz la pone verde.</li><li style="margin-bottom:8px;"><strong>Fresca y aireada:</strong> en canasta o bolsa con huecos, nunca en plástico cerrado.</li><li style="margin-bottom:8px;"><strong>Aparte:</strong> las que tengan golpes o manchas, que dañan a las demás.</li></ul><p style="margin:6px 0 0;font-size:12px;color:#2D2A26;">Fuente: <a href="https://extension.oregonstate.edu/es/node/81641/printable/print" style="color:#2D2A26;">Universidad Estatal de Oregón</a></p>
+      </td></tr>
+    </table>
+    {% elif contact.MOLESTIA == "calidad" %}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#B7CD96;border-radius:12px;margin:0 0 24px;">
+      <tr><td style="padding:22px 24px;font-size:16px;line-height:1.55;color:#2D2A26;">
+        <p style="margin:0 0 6px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#2D2A26;">Lo que nos enseña la tierra</p>
+        <p style="margin:0 0 12px;font-size:22px;line-height:1.25;font-style:italic;color:#2D2A26;">Cómo saber si una papa está buena</p>
+        <p style="margin:0 0 10px;font-style:italic;">La tierra deja su firma en cada alimento. Solo hay que aprender a leerla.</p>
+        <ul style="margin:0;padding-left:20px;"><li style="margin-bottom:8px;"><strong>Tócala:</strong> firme, sin partes blandas.</li><li style="margin-bottom:8px;"><strong>Mírala:</strong> sin cortes, manchas ni partes verdes.</li><li style="margin-bottom:8px;"><strong>Una pista:</strong> las de cáscara delgada, como la criolla, duran menos; cómpralas para pocos días.</li></ul>
+      </td></tr>
+    </table>
+    {% elif contact.MOLESTIA == "siempre_lo_mismo" %}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#B7CD96;border-radius:12px;margin:0 0 24px;">
+      <tr><td style="padding:22px 24px;font-size:16px;line-height:1.55;color:#2D2A26;">
+        <p style="margin:0 0 6px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#2D2A26;">Lo que nos enseña la tierra</p>
+        <p style="margin:0 0 12px;font-size:22px;line-height:1.25;font-style:italic;color:#2D2A26;">Una papa, tres platos</p>
+        <p style="margin:0 0 10px;font-style:italic;">La rutina escoge por ti. Pero una misma papa puede ser tres platos.</p>
+        <ul style="margin:0;padding-left:20px;"><li style="margin-bottom:8px;"><strong>Cocida:</strong> con sal y un poco de hogao.</li><li style="margin-bottom:8px;"><strong>Asada:</strong> en trozos, al horno hasta que la cáscara cruja.</li><li style="margin-bottom:8px;"><strong>En sopa:</strong> deshecha en el caldo hasta que lo espese.</li></ul>
+      </td></tr>
+    </table>
+    {% elif contact.MOLESTIA == "salir_seguido" %}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#B7CD96;border-radius:12px;margin:0 0 24px;">
+      <tr><td style="padding:22px 24px;font-size:16px;line-height:1.55;color:#2D2A26;">
+        <p style="margin:0 0 6px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#2D2A26;">Lo que nos enseña la tierra</p>
+        <p style="margin:0 0 12px;font-size:22px;line-height:1.25;font-style:italic;color:#2D2A26;">Organiza la semana por lo que dura</p>
+        <p style="margin:0 0 10px;font-style:italic;">A veces no es cuánto compras, sino el orden: las hojas piden ir primero; la papa sabe esperar.</p>
+        <ul style="margin:0;padding-left:20px;"><li style="margin-bottom:8px;"><strong>Primero:</strong> lo de hoja y lo maduro.</li><li style="margin-bottom:8px;"><strong>A mitad de semana:</strong> brócoli, pepino y tomate.</li><li style="margin-bottom:8px;"><strong>Al final:</strong> zanahoria, papa, cebolla y cítricos.</li></ul><p style="margin:6px 0 0;font-size:12px;color:#2D2A26;">Fuente: <a href="https://www.psu.edu/news/agricultural-sciences/story/your-produce-may-be-getting-gassed-refrigerator" style="color:#2D2A26;">Penn State</a></p>
+      </td></tr>
+    </table>
+    {% endif %}
+
+    <p style="margin:0 0 18px;font-style:italic;">Próxima historia: el caldo que en París, en 1769, le dio nombre a los restaurantes.</p>
+
+    {% if contact.CODIGO_INVITAR %}
+    <p style="margin:0 0 22px;font-size:16px;"><strong>¿Alguien de tu casa vive lo mismo?</strong> Mándale el quiz:<br><a href="https://vivolive.co/food-market/?ref={{ contact.CODIGO_INVITAR }}&amp;utm_source=correo" style="color:#9F2241;font-weight:bold;word-break:break-all;">vivolive.co/food-market/?ref={{ contact.CODIGO_INVITAR }}</a></p>
+    {% endif %}
+  </td></tr>
+
+  <tr><td style="padding:0 32px 24px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#9F2241;border:2px dashed #FDDA64;border-radius:14px;">
+      <tr><td align="center" style="padding:20px;font-size:15px;line-height:1.5;color:#FFFFFF;">
+        <p style="margin:0 0 6px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#FDDA64;">Tu 10 %, guardado</p>
+        <p style="margin:0 0 8px;">Te avisamos cuándo usarlo.</p>
+        <p style="margin:0 0 6px;font-family:Helvetica,Arial,sans-serif;font-size:24px;letter-spacing:.2em;font-weight:bold;color:#FDDA64;">VIVOLAUNCH</p>
+        <p style="margin:0;font-size:13px;"><a href="https://vivolive.co/food-market/condiciones.html" style="color:#FFFFFF;">Condiciones</a></p>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <tr><td style="padding:0 32px 8px;font-size:18px;line-height:1.65;">
+    <p style="margin:0 0 22px;font-size:12px;line-height:1.5;color:#5F6638;">Fuentes: <a href="https://www.eltiempo.com/bogota/cundinamarca-historia-del-museo-campesino-y-de-semillas-nativas-en-gachancipa-539958" style="color:#5F6638;">María Lilia</a> · <a href="https://news.cals.wisc.edu/2005/10/03/a-single-origin-for-the-cultivated-potato" style="color:#5F6638;">el origen de la papa</a> · <a href="https://cipotato.org/potato/" style="color:#5F6638;">sus variedades</a> · Papa criolla: <a href="https://www.agronegocios.co/agricultura/lo-que-se-debe-tener-en-cuenta-en-un-cultivo-de-papa-3658430" style="color:#5F6638;">4 meses (Agrosavia)</a> y <a href="https://quenotefaltelapapa.co/recetas/criollas-andinas/" style="color:#5F6638;">25 minutos (Fedepapa)</a></p>
+    <p style="margin:0 0 28px;">Con cariño,<br>VIVO LIVE - FOOD</p>
+  </td></tr>
+
+  <tr><td style="background:#F1E8D4;padding:20px 32px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#6B665F;">
+    Recibes esto porque hiciste el quiz de VIVO Food.
+    <a href="{{ unsubscribe }}" style="color:#6B665F;">Darte de baja</a> ·
+    <a href="https://vivolive.co/food-market/privacidad.html" style="color:#6B665F;">Política de datos</a><br>
+    VIVO Live · GREENNOVATION S.A.S. · NIT 901.401.631-7 · Medellín, Colombia
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

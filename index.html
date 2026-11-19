@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¿Qué dice tu mercado sobre lo que te importa? · VIVO Live Food</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+@font-face{font-family:"TT Norms";src:url("fuentes/TTNorms-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"TT Norms";src:url("fuentes/TTNorms-Medium.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:"TT Norms";src:url("fuentes/TTNorms-Bold.otf") format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:"TT Norms";src:url("fuentes/TTNorms-Black.otf") format("opentype");font-weight:900;font-display:swap}
+
+/* Colores de la marca (manual de VIVO) y papel de la web de Sebastián (VIVO_Web_v13_14). */
+:root{
+  --oliva:#5F6638; --vino:#9F2241; --naranja:#FF9015; --negro:#2D2A26;
+  --verde:#B7CD96; --rosa:#EFC2B3; --amarillo:#FDDA64;
+  --papel:#F8F7F0; --regla:rgba(45,42,38,.23);
+  --base:var(--papel);
+  --bloque:var(--verde);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--base)}
+body{font-family:"TT Norms",system-ui,sans-serif;color:var(--negro);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh;letter-spacing:-.005em}
+*{font-variant-ligatures:none;font-feature-settings:"liga" 0,"dlig" 0,"clig" 0}
+.app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--base);position:relative}
+.pantalla{display:none;min-height:100vh;min-height:100dvh;flex-direction:column}
+.pantalla.activa{display:flex;animation:entra .35s ease both}
+.quieto .pantalla.activa{animation:none}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+.ceja{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;line-height:1.4;text-wrap:balance}
+h1,h2{font-weight:900;letter-spacing:-.05em;line-height:.98;text-wrap:balance}
+
+/* Botones: solo las llamadas a la acción llevan esquina suave (la web de Sebastián). */
+.btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:14px;text-wrap:balance;
+  text-transform:uppercase;letter-spacing:.08em;background:var(--oliva);color:#fff;
+  padding:18px 22px;width:100%;border-radius:9px;transition:transform .1s, opacity .2s}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.35;cursor:default}
+.btn-texto{appearance:none;background:none;border:0;font:inherit;font-size:12px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--oliva);padding:14px 4px;cursor:pointer}
+
+/* ---------- Portada ---------- */
+.portada{background:var(--base)}
+.portada .bloque-top{background:var(--oliva);color:#fff;padding:22px 24px 26px;position:relative}
+.portada .logo-top img{width:150px}
+.portada .foto{height:300px;overflow:hidden;background:var(--verde)}
+.portada .foto img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.portada .cuerpo{padding:30px 24px 30px;flex:1;display:flex;flex-direction:column}
+.portada .ceja{color:var(--oliva);margin-bottom:18px;border-top:1px solid var(--regla);padding-top:18px}
+.portada h1{font-size:40px;margin-bottom:20px}
+.portada p.intro{font-size:17px;line-height:1.6;margin-bottom:28px;max-width:34ch;text-wrap:pretty}
+.portada .letra{font-size:12px;color:rgba(45,42,38,.75);text-align:center;margin-top:14px;line-height:1.5}
+.portada .franja{display:flex;height:10px}
+.portada .franja span{flex:1}
+
+/* ---------- Preguntas ---------- */
+.cabeza{background:var(--bloque);padding:18px 24px 28px;transition:background .3s}
+.cabeza .fila{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.cabeza .fila img{width:130px}
+.barra{height:6px;background:rgba(45,42,38,.14);overflow:hidden}
+.barra i{display:block;height:100%;background:var(--oliva);width:0;transition:width .35s ease}
+.cabeza h2{font-size:30px;line-height:1.02}
+.cabeza .pista{font-size:14px;margin-top:12px;font-weight:500}
+.opciones{padding:22px 24px 8px;display:flex;flex-direction:column;gap:10px;flex:1}
+.op{appearance:none;font:inherit;text-align:left;cursor:pointer;width:100%;
+  display:flex;align-items:center;gap:14px;background:#fff;color:var(--negro);
+  border:1px solid var(--regla);padding:16px 16px;font-size:17px;font-weight:500;line-height:1.3;
+  border-radius:0;transition:background .15s,border-color .15s,color .15s}
+.op .marca{flex:0 0 22px;height:22px;border:1.5px solid var(--oliva);display:grid;place-items:center;background:#fff}
+.op.unica .marca{border-radius:50%}
+.op[aria-pressed="true"]{background:var(--oliva);border-color:var(--oliva);color:#fff}
+.op[aria-pressed="true"] .marca{background:#fff;border-color:#fff}
+.op[aria-pressed="true"] .marca::after{content:"";width:10px;height:10px;background:var(--oliva)}
+.op.unica[aria-pressed="true"] .marca::after{border-radius:50%}
+.pie{padding:14px 24px 26px;display:flex;align-items:center;gap:12px;position:sticky;bottom:0;
+  background:var(--base);border-top:1px solid var(--regla)}
+.pie .btn{flex:1;padding-inline:14px}
+
+/* ---------- Datos ---------- */
+.datos .cabeza{background:var(--rosa)}
+.datos h2{font-size:30px}
+.datos .sub{margin-top:12px;font-size:16px}
+form.campos{padding:22px 24px 8px;display:flex;flex-direction:column;gap:18px;flex:1}
+.campo label,.campo .titulo{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.campo .ayuda{font-size:14px;color:rgba(45,42,38,.75);margin-top:6px}
+.campo input[type=text],.campo input[type=email],.campo select{width:100%;font:inherit;font-size:17px;
+  padding:15px 14px;border:1px solid var(--regla);background:#fff;border-radius:0;color:var(--negro);
+  -webkit-appearance:none;appearance:none}
+.campo select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M0 0h12L6 7z' fill='%235F6638'/%3E%3C/svg%3E");
+  background-position:calc(100% - 16px) 50%;background-size:12px 7px;background-repeat:no-repeat}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--oliva);box-shadow:0 0 0 3px rgba(95,102,56,.18)}
+.campo .opcional{font-weight:500;letter-spacing:.08em;opacity:.65}
+.doble{display:flex;gap:10px}.doble select:first-child{flex:0 0 38%}
+.autoriza{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.45;background:#fff;
+  border:1px solid var(--regla);padding:14px}
+.autoriza input{flex:0 0 22px;width:22px;height:22px;margin-top:1px;accent-color:var(--oliva)}
+.error{color:var(--vino);font-size:14px;font-weight:500;min-height:1em}
+
+/* ---------- Resultado ---------- */
+.resultado{background:var(--bloque)}
+.resultado .logo-top{padding:22px 24px 18px}
+.resultado .logo-top img{width:150px}
+.resultado .foto{height:300px;overflow:hidden}
+.resultado .foto img{width:100%;height:100%;object-fit:cover}
+.resultado .cuerpo{padding:28px 24px 10px}
+.resultado .ceja{margin-bottom:14px}
+/* El título lleva su corte de renglón en PERFILES (\n). */
+.resultado h1{font-size:44px;line-height:.95;margin-bottom:20px;white-space:pre-line}
+.resultado .l1{font-size:19px;font-weight:500;line-height:1.4;margin-bottom:14px;text-wrap:pretty}
+.resultado .l2{font-size:17px;line-height:1.55;text-wrap:pretty}
+.resultado .l2 + .l2{margin-top:12px}
+.regalo{margin:24px 24px 0;background:var(--papel);padding:24px 20px 22px;text-align:center;color:var(--negro);border:1px solid var(--regla)}
+.regalo .ceja{color:var(--oliva);margin-bottom:10px}
+.regalo .que{font-size:16px;margin-bottom:16px;text-wrap:balance}
+.regalo .codigo{display:inline-block;font-weight:900;font-size:24px;letter-spacing:.2em;
+  border:2px dashed var(--oliva);color:var(--oliva);padding:12px 18px;margin-bottom:12px}
+.regalo .cond{font-size:13px;color:rgba(45,42,38,.75)}
+.resultado .cierre{padding:22px 24px 34px;font-size:15px;text-wrap:pretty}
+.resultado.oscuro{color:#fff}
+/* Invitar: el link propio de cada persona (sale con el código que devuelve el servidor). */
+.invita{margin:16px 24px 0;background:var(--papel);color:var(--negro);padding:22px 20px;text-align:center;border:1px solid var(--regla)}
+.invita .ceja{color:var(--vino);margin-bottom:10px}
+.invita p{font-size:15px;margin-bottom:14px;text-wrap:pretty}
+.invita .btn{background:var(--vino);margin-bottom:6px}
+.invita .link{font-size:13px;word-break:break-all;color:rgba(45,42,38,.75)}
+/* Trampa para robots: la persona no la ve ni la alcanza con el teclado. */
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+
+  <!-- 1. PORTADA -->
+  <section class="pantalla portada" data-paso="portada">
+    <div class="bloque-top"><div class="logo-top"><img src="img/logotipo-blanco.png" alt="VIVO · Live Food"></div></div>
+    <div class="foto"><img src="img/marca-02.jpg" alt="Caja de mercado de VIVO con frutas y verduras"></div>
+    <div class="franja" aria-hidden="true"><span style="background:var(--verde)"></span><span style="background:var(--rosa)"></span><span style="background:var(--amarillo)"></span><span style="background:var(--naranja)"></span></div>
+    <div class="cuerpo">
+      <div class="ceja">Mercado de temporada</div>
+      <h1>Tu mercado de temporada, seleccionado para tu hogar.</h1>
+      <p class="intro">Descubre qué dice tu mercado sobre lo que te importa al hacer mercado y preparar tus alimentos. Al terminar te llevas un 10% de descuento en VIVO Food.</p>
+      <button class="btn" type="button" id="empezar">Hacer el quiz y obtener 10% de descuento</button>
+      <p class="letra">2 minutos · Cuidamos tus datos según nuestra <a href="privacidad.html" target="_blank">política de datos</a>.</p>
+    </div>
+  </section>
+
+  <!-- 2. PREGUNTAS (una sola pantalla que se rellena con JavaScript) -->
+  <section class="pantalla pregunta" data-paso="pregunta">
+    <div class="cabeza">
+      <div class="fila"><img id="logo-pregunta" src="img/logotipo-5F6638.png" alt="VIVO · Live Food"></div>
+      <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="11"><i id="avance"></i></div>
+      <h2 id="texto-pregunta" style="margin-top:24px"></h2>
+      <p class="pista" id="pista"></p>
+    </div>
+    <div class="opciones" id="opciones" role="group"></div>
+    <div class="pie">
+      <button class="btn-texto" type="button" id="atras">Atrás</button>
+      <button class="btn" type="button" id="siguiente" disabled>Siguiente</button>
+    </div>
+  </section>
+
+  <!-- 3. DATOS -->
+  <section class="pantalla datos" data-paso="datos">
+    <div class="cabeza">
+      <div class="fila"><img src="img/logotipo-9F2241.png" alt="VIVO · Live Food"></div>
+      <div class="barra"><i style="width:100%"></i></div>
+      <h2 style="margin-top:24px">Tu resultado está listo</h2>
+      <p class="sub">Dinos tu nombre y a dónde te enviamos tu 10% de descuento.</p>
+    </div>
+    <form class="campos" id="form-datos" action="" method="post" novalidate>
+      <div class="campo">
+        <label for="nombre">Tu nombre</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="given-name" required>
+      </div>
+      <div class="campo">
+        <label for="correo">Tu correo</label>
+        <input type="email" id="correo" name="correo" autocomplete="email" inputmode="email" required>
+      </div>
+      <div class="campo">
+        <label for="barrio">Barrio o municipio</label>
+        <input type="text" id="barrio" name="barrio" autocomplete="address-level2" required>
+        <p class="ayuda">Para saber si llegamos hasta tu puerta.</p>
+      </div>
+      <div class="campo">
+        <span class="titulo">Tu cumpleaños <span class="opcional">· opcional</span></span>
+        <div class="doble">
+          <select id="cumple-dia" name="cumple_dia" aria-label="Día"><option value="">Día</option></select>
+          <select id="cumple-mes" name="cumple_mes" aria-label="Mes"><option value="">Mes</option></select>
+        </div>
+        <p class="ayuda">Ese día te escribimos.</p>
+      </div>
+      <label class="autoriza">
+        <input type="checkbox" id="autorizo" name="autorizacion_datos" value="si" required>
+        <span>Autorizo a GREENNOVATION S.A.S. (VIVO Live) a tratar mis datos personales para enviarme mi descuento, escribirme sobre VIVO Food y conocer cómo compro y como en casa, según su <a href="privacidad.html" target="_blank">política de datos</a>, de acuerdo con la Ley 1581 de 2012.</span>
+      </label>
+      <input type="hidden" name="respuestas" id="respuestas">
+      <input type="hidden" name="resultado" id="resultado-campo">
+      <div class="trampa" aria-hidden="true"><label>Sitio web <input type="text" name="sitio_web" id="sitio-web" tabindex="-1" autocomplete="off"></label></div>
+      <p class="error" id="error" role="alert"></p>
+    </form>
+    <div class="pie">
+      <button class="btn-texto" type="button" id="atras-datos">Atrás</button>
+      <button class="btn" type="submit" form="form-datos" id="enviar">Ver qué dice mi mercado</button>
+    </div>
+  </section>
+
+  <!-- 4. RESULTADO -->
+  <section class="pantalla resultado" data-paso="resultado" id="pantalla-resultado">
+    <div class="logo-top"><img id="logo-resultado" src="img/logotipo-5F6638.png" alt="VIVO · Live Food"></div>
+    <div class="foto"><img id="foto-resultado" src="img/marca-03.jpg" alt=""></div>
+    <div class="cuerpo">
+      <div class="ceja" id="ceja-resultado">Esto dice tu mercado sobre lo que te importa</div>
+      <h1 id="titulo-resultado"></h1>
+      <p class="l1" id="linea-1"></p>
+      <p class="l2" id="linea-2"></p>
+      <p class="l2" id="linea-3"></p>
+    </div>
+    <div class="regalo">
+      <div class="ceja">Tu descuento de prelanzamiento</div>
+      <p class="que">10% de descuento en productos de VIVO Food. Guárdalo: ya es tuyo.</p>
+      <div class="codigo">VIVOLAUNCH</div>
+      <p class="cond">Sirve solo el día que abramos las suscripciones: te avisamos por correo. <a href="condiciones.html" target="_blank">Condiciones</a></p>
+    </div>
+    <div class="invita" id="invita" hidden>
+      <div class="ceja">Pásalo a tu mesa</div>
+      <p>¿Alguien de tu casa o tu grupo vive lo mismo con el mercado? Mándale el quiz: también le llega su 10%.</p>
+      <button class="btn" type="button" id="compartir">Mandar mi link</button>
+      <p class="link" id="mi-link"></p>
+    </div>
+    <p class="cierre" id="cierre"></p>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  // Las 4 preguntas. Los ids p1..p4 siguen este orden.
+  var PREGUNTAS = [
+    {id:"p1", t:"Si pudieras mejorar tu forma de hacer mercado, ¿qué cambiarías?", varias:true,
+     nada:6,
+     o:["No tener que salir a comprar","Saber de dónde viene cada cosa","Más variedad en mi mesa","Ideas de qué cocinar","Que lo fresco me dure más","Un mejor precio","Nada, así estoy bien"]},
+    {id:"p2", t:"Las frutas y verduras, ¿dónde las compras casi siempre?", varias:false,
+     o:["En el supermercado","En el fruver o la tienda del barrio","En la plaza o mercado campesino","Por app o WhatsApp","En varios lugares"]},
+    {id:"p3", t:"Aquí entre nos: ¿qué te pasa con las frutas y verduras?", varias:true, nada:4,
+     o:["Se me dañan antes de usarlas","No sé si son de buena calidad","Siempre compro lo mismo","Tengo que salir a comprar seguido","Nada, así estoy bien"]},
+    {id:"p4", t:"La que más dice de ti: al escoger tus alimentos, ¿qué pesa más?", varias:false,
+     o:["Que sea sano","Que sea rico y fresco","Saber de dónde viene","Que rinda y tenga buen precio","Que les guste a todos en casa"]}
+  ];
+  var BLOQUES = ["var(--verde)","var(--rosa)","var(--amarillo)"];
+  // El logo de cada fondo va en su pareja del manual de VIVO ("Aplicaciones de color", pág. 15):
+  // oliva-verde, vino-rosa, amarillo-naranja, negro-blanco; al revés también.
+  var LOGO_SOBRE = {"var(--verde)":"5F6638", "var(--oliva)":"B7CD96", "var(--rosa)":"9F2241",
+                    "var(--vino)":"EFC2B3", "var(--amarillo)":"FF9015", "var(--naranja)":"FDDA64"};
+  function logoSobre(fondo){ return "img/logotipo-" + LOGO_SOBRE[fondo] + ".png"; }
+
+  // Los 4 resultados.
+  var PERFILES = {
+    casa:     {titulo:"La casa\nque cuida", l1:"Tu mercado dice que piensas en plural: antes de escoger tus alimentos, ya pensaste en los de tu mesa.",
+               vivo:"En VIVO también pensamos en plural: alimentos con origen, para la mesa de tu casa.",
+               color:"var(--rosa)", foto:"img/marca-03.jpg", alt:"Bolsa de lona de VIVO", oscuro:false},
+    bienestar:{titulo:"Cuidado\ncon sabor", l1:"Tu mercado dice que cuidarte va primero, pero no a costa del sabor: para ti, alimentarte bien también es disfrutar.",
+               vivo:"En VIVO vas a saber de dónde viene lo que llega a tu mesa.",
+               color:"var(--vino)", foto:"img/marca-06.jpg", alt:"Zanahorias sobre papel de VIVO", oscuro:true},
+    origen:   {titulo:"El del\norigen", l1:"Tu mercado dice que lo que llega a tu mesa tiene dirección: un lugar, una familia, una temporada. Te importa la historia, no solo la etiqueta.",
+               vivo:"En VIVO te contamos de dónde viene cada alimento y quién lo cultiva.",
+               color:"var(--oliva)", foto:"img/marca-11.jpg", alt:"Bolsa kraft de VIVO con frutas y verduras", oscuro:true},
+    temporada:{titulo:"Cocina\nde temporada", l1:"Tu mercado dice que lo bueno, para ti, se nota en el plato: no compras por comprar, buscas que sepa a fresco y que valga la pena.",
+               vivo:"En VIVO llega lo que está en su punto y en su temporada.",
+               color:"var(--amarillo)", foto:"img/marca-07.jpg", alt:"Frutas de temporada sobre fondo naranja", oscuro:false}
+  };
+  // Molestias de la 3, en el orden de prioridad de la tarea (índices 0 a 3).
+  var MOLESTIAS = [
+    "Nos contaste que las frutas y verduras se te dañan antes de usarlas. No es descuido: tu mercado va a otro ritmo que tu cocina.",
+    "Nos contaste que no siempre sabes si las frutas y verduras son de buena calidad. Cuando no sabes de dónde viene algo, tampoco sabes qué esperar.",
+    "Nos contaste que siempre terminas comprando lo mismo. Pasa cuando la rutina escoge por ti.",
+    "Nos contaste que tienes que salir a comprar seguido. Ese tiempo también es parte de lo que te cuesta el mercado."
+  ];
+
+  var resp = {};          // p1..p4 -> arreglo de índices marcados
+  var i = 0;              // pregunta actual (0..8)
+  var $ = function(id){return document.getElementById(id)};
+
+  function mostrar(paso){
+    document.querySelectorAll(".pantalla").forEach(function(s){
+      s.classList.toggle("activa", s.dataset.paso === paso);
+    });
+    window.scrollTo(0,0);
+  }
+
+  function pintarPregunta(){
+    var q = PREGUNTAS[i], marcadas = resp[q.id] || [];
+    document.documentElement.style.setProperty("--bloque", BLOQUES[i % BLOQUES.length]);
+    $("logo-pregunta").src = logoSobre(BLOQUES[i % BLOQUES.length]);
+    // Sin número de pregunta: solo la barra de avance, que corre más al principio y se frena al final.
+    var pct = Math.round(Math.pow((i+1) / (PREGUNTAS.length+1), 0.6) * 100);
+    $("avance").style.width = pct + "%";
+    document.querySelector(".barra[role=progressbar]").setAttribute("aria-valuenow", pct);
+    $("texto-pregunta").textContent = q.t;
+    $("pista").textContent = (i >= PREGUNTAS.length - 2 ? "Ya casi está tu resultado. " : "") + (q.varias ? "Puedes marcar varias." : "Escoge una.");
+    var cont = $("opciones"); cont.innerHTML = "";
+    cont.setAttribute("aria-label", q.t);
+    q.o.forEach(function(txt, k){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "op " + (q.varias ? "varias" : "unica");
+      b.setAttribute("aria-pressed", marcadas.indexOf(k) > -1 ? "true" : "false");
+      b.innerHTML = '<span class="marca" aria-hidden="true"></span><span></span>';
+      b.lastChild.textContent = txt;
+      b.addEventListener("click", function(){ marcar(k); });
+      cont.appendChild(b);
+    });
+    $("siguiente").disabled = marcadas.length === 0;
+    $("siguiente").textContent = i === PREGUNTAS.length - 1 ? "Último paso" : "Siguiente";
+  }
+
+  function marcar(k){
+    var q = PREGUNTAS[i], m = (resp[q.id] || []).slice();
+    if (!q.varias){
+      m = [k];
+      resp[q.id] = m; pintarPregunta();
+      setTimeout(siguiente, 280);   // opción única: pasa sola
+      return;
+    }
+    var pos = m.indexOf(k);
+    if (pos > -1){ m.splice(pos,1); }
+    else if (q.nada !== undefined && k === q.nada){ m = [k]; }            // "Nada" desmarca las demás
+    else { m.push(k); if (q.nada !== undefined){ m = m.filter(function(x){return x !== q.nada}); } }
+    resp[q.id] = m; pintarPregunta();
+  }
+
+  function siguiente(){
+    if (!(resp[PREGUNTAS[i].id] || []).length) return;
+    if (i < PREGUNTAS.length - 1){ i++; pintarPregunta(); window.scrollTo(0,0); }
+    else { mostrar("datos"); }
+  }
+
+  // Qué pregunta da cada dato del resultado.
+  var Q_MOLESTIA = "p3", Q_PESA = "p4";
+  // Regla del resultado: sale de la 4.
+  function calcularPerfil(r){
+    var pesa = (r[Q_PESA] || [])[0];
+    switch (pesa){
+      case 0: return "bienestar";
+      case 1: return "temporada";
+      case 2: return "origen";
+      case 4: return "casa";
+      case 3: return "temporada";
+      default: return "temporada";
+    }
+  }
+  // Lo que se guarda en Brevo (atributo MOLESTIA), en el mismo orden que MOLESTIAS.
+  var MOLESTIA_CLAVES = ["se_danan","calidad","siempre_lo_mismo","salir_seguido"];
+  function indiceMolestia(r){
+    var molestias = r[Q_MOLESTIA] || [];
+    for (var k = 0; k < 4; k++){ if (molestias.indexOf(k) > -1) return k; }
+    return -1;   // marcó "Nada, así estoy bien": sin molestia
+  }
+  function calcularMolestia(r){
+    var k = indiceMolestia(r);
+    return k > -1 ? MOLESTIAS[k] : "";
+  }
+
+  function pintarResultado(nombre, correo){
+    var clave = calcularPerfil(resp), p = PERFILES[clave], molestia = calcularMolestia(resp);
+    var sec = $("pantalla-resultado");
+    sec.style.setProperty("--bloque", p.color);
+    sec.classList.toggle("oscuro", p.oscuro);
+    $("logo-resultado").src = logoSobre(p.color);
+    $("foto-resultado").src = p.foto; $("foto-resultado").alt = p.alt;
+    $("ceja-resultado").textContent = nombre ? (nombre + ", esto dice tu mercado sobre lo que te importa") : "Esto dice tu mercado sobre lo que te importa";
+    $("titulo-resultado").textContent = p.titulo;
+    $("linea-1").textContent = p.l1;
+    $("linea-2").textContent = molestia;
+    $("linea-2").hidden = !molestia;
+    $("linea-3").textContent = p.vivo;
+    $("cierre").textContent = "Ya estás en la lista de prelanzamiento de VIVO Food. Te escribimos con tu descuento y con lo que viene.";
+    $("resultado-campo").value = p.titulo.replace("\n", " ");
+    mostrar("resultado");
+  }
+
+  // Cumpleaños: días y meses.
+  (function(){
+    var d = $("cumple-dia"), m = $("cumple-mes");
+    for (var n = 1; n <= 31; n++){ d.add(new Option(n, n)); }
+    ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
+      .forEach(function(t, k){ m.add(new Option(t, k+1)); });
+  })();
+
+  $("empezar").addEventListener("click", function(){ i = 0; pintarPregunta(); mostrar("pregunta"); });
+  $("siguiente").addEventListener("click", siguiente);
+  $("atras").addEventListener("click", function(){
+    if (i > 0){ i--; pintarPregunta(); window.scrollTo(0,0); } else { mostrar("portada"); }
+  });
+  $("atras-datos").addEventListener("click", function(){ i = PREGUNTAS.length - 1; pintarPregunta(); mostrar("pregunta"); });
+
+  // De dónde llegó: ?ref=CODIGO (alguien lo invitó) y ?utm_source= (o ?f=). Se guardan por si recarga.
+  var qsEntrada = new URLSearchParams(location.search);
+  function recordar(clave, valor){
+    try { if (valor) sessionStorage.setItem("vivo-" + clave, valor); return valor || sessionStorage.getItem("vivo-" + clave) || ""; }
+    catch(_){ return valor || ""; }
+  }
+  var REF = recordar("ref", (qsEntrada.get("ref") || "").replace(/[^A-Za-z0-9]/g, "").slice(0, 6));
+  var FUENTE = recordar("fuente", (qsEntrada.get("utm_source") || qsEntrada.get("f") || "").slice(0, 60)) || (REF ? "invitacion" : "");
+  var ENDPOINT = "api/lista.php";
+
+  function pintarInvitacion(codigo){
+    if (!codigo) return;
+    var link = location.origin + location.pathname + "?ref=" + codigo;
+    $("mi-link").textContent = link.replace(/^https?:\/\//, "");
+    $("invita").hidden = false;
+    $("compartir").onclick = function(){
+      var texto = "Hice este quiz de VIVO Food sobre cómo hacemos mercado. Haz el tuyo y te llega un 10%: ";
+      if (navigator.share){ navigator.share({title:"VIVO Food", text:texto, url:link}).catch(function(){}); return; }
+      location.href = "https://wa.me/?text=" + encodeURIComponent(texto + link);
+    };
+  }
+
+  var enviando = false;
+  $("form-datos").addEventListener("submit", function(e){
+    e.preventDefault();
+    if (enviando) return;
+    var nombre = $("nombre").value.trim(), correo = $("correo").value.trim(), barrio = $("barrio").value.trim();
+    var err = "";
+    if (!nombre) err = "Escribe tu nombre para ver tu resultado.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) err = "Revisa cómo escribiste tu correo: ahí te llega tu descuento.";
+    else if (!barrio) err = "Cuéntanos tu barrio o municipio para saber si llegamos.";
+    else if (!$("autorizo").checked) err = "Para enviarte tu descuento, necesitamos que marques la autorización.";
+    $("error").textContent = err;
+    if (err) return;
+    // Lo que se guardaría: cada respuesta con su texto, para poder contarlas.
+    var salida = {};
+    PREGUNTAS.forEach(function(q){
+      salida[q.id] = (resp[q.id] || []).map(function(k){ return q.o[k]; });
+    });
+    $("respuestas").value = JSON.stringify(salida);
+    var km = indiceMolestia(resp);
+    var datos = {
+      nombre: nombre, correo: correo, barrio: barrio,
+      cumple_dia: $("cumple-dia").value, cumple_mes: $("cumple-mes").value,
+      autorizacion_datos: "si", respuestas: $("respuestas").value,
+      perfil: calcularPerfil(resp), molestia: km > -1 ? MOLESTIA_CLAVES[km] : "ninguna",
+      ref: REF, fuente: FUENTE, sitio_web: $("sitio-web").value
+    };
+    // El resultado se muestra solo cuando la persona quedó guardada: si no, no le llegaría su 10%.
+    enviando = true;
+    var boton = $("enviar"), textoBoton = boton.textContent;
+    boton.disabled = true; boton.textContent = "Guardando…";
+    function listo(){ enviando = false; boton.disabled = false; boton.textContent = textoBoton; }
+    fetch(ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(datos)})
+      .then(function(r){ return r.json().catch(function(){ return {ok:false}; }); })
+      .then(function(r){
+        listo();
+        if (r && r.ok){ pintarResultado(nombre.split(" ")[0], correo); pintarInvitacion(r.codigo); return; }
+        var porCampo = {correo:"Revisa cómo escribiste tu correo: ahí te llega tu descuento.",
+                        espera:"Recibimos muchos intentos desde esta conexión. Prueba otra vez en un rato."};
+        $("error").textContent = porCampo[r && r.error] || "No pudimos guardar tus datos. Toca el botón otra vez.";
+      })
+      .catch(function(){ listo(); $("error").textContent = "Se cortó la conexión. Revisa tu internet y toca el botón otra vez."; });
+  });
+
+  // Vista directa para revisar: ?paso=portada | 1..4 | datos | resultado
+  var qs = new URLSearchParams(location.search), paso = qs.get("paso");
+  if (paso) document.documentElement.classList.add("quieto");
+  if (paso && /^\d+$/.test(paso) && +paso >= 1 && +paso <= PREGUNTAS.length){
+    i = +paso - 1;
+    if (qs.get("marcar")) resp[PREGUNTAS[i].id] = qs.get("marcar").split(",").map(Number);
+    pintarPregunta(); mostrar("pregunta");
+  } else if (paso === "datos"){
+    mostrar("datos");
+  } else if (paso === "resultado"){
+    resp[Q_PESA] = [qs.has("p4") ? +qs.get("p4") : 3];
+    resp[Q_MOLESTIA] = (qs.get("p3") || "1,3").split(",").map(Number);
+    pintarResultado(qs.get("nombre") || "Ana", "");
+    if (qs.get("codigo")) pintarInvitacion(qs.get("codigo"));
+  } else {
+    mostrar("portada");
+  }
+})();
+</script>
+</body>
+</html>
